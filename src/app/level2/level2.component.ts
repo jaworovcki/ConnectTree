@@ -27,10 +27,20 @@ export class Level2Component {
       this.boardContent[col][row] = this.currentPlayerIndex;
       this.currentPlayerIndex = this.currentPlayerIndex === BoardContent.X ? BoardContent.O : BoardContent.X;
     }
+
+    this.currentWinnerIndex = this.getWinnerIndex();
   }
 
   public getStyle(col: number, row: number): string {
     return `occupied-${this.getPlayerName(col, row)}`;
+  }
+
+  public get winnerIndex(): number {
+    return this.currentWinnerIndex;
+  }
+
+  public getWinnerName(): string {
+    return this.playerNames[this.currentWinnerIndex];
   }
 
   onRestart() {
@@ -43,7 +53,7 @@ export class Level2Component {
     this.currentWinnerIndex = 0;
   }
 
-  getWinnerIndex(): number {
+  private getWinnerIndex(): number {
     // check rows
     for (let row = 0; row < 3; row++) {
       if (this.boardContent[0][row] !== BoardContent.EMPTY &&
@@ -73,7 +83,4 @@ export class Level2Component {
     }
     return 0;
   }
-
-
-
 }
