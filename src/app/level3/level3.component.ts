@@ -44,5 +44,4 @@ export class Level3Component extends Level2Component {
 
     return result;
   }
-
 }
