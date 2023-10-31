@@ -1,1 +1,11 @@
-<p>level4 works!</p>
+<table class="tictactoe-board">
+  <tbody>
+      <tr *ngFor="let row of getCells(); let rowIndex = index">
+          <td *ngFor="let col of row; let colIndex = index"
+           [class]="col.class" (click)="boardService.set(colIndex, rowIndex)">{{ col.playerName }}</td>
+      </tr>
+  </tbody>
+</table>
+
+<h2 [hidden]="boardService.winnerIndex === 0">The winner is {{getWinnerName()}}</h2>
+<button (click)="boardService.restart()">Restart</button>
