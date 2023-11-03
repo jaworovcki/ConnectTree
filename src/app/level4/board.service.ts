@@ -19,6 +19,7 @@ export class BoardService {
 
   public set(col: number, row: number): void {
     if (this.currentWinnerIndex === 0 && this.boardContent[col][row] === BoardContent.EMPTY) {
+      console.log(`Setting ${col},${row} to ${this.currentPlayerIndex}`);
       this.boardContent[col][row] = this.currentPlayerIndex;
       this.currentPlayerIndex = this.currentPlayerIndex === BoardContent.X ? BoardContent.O : BoardContent.X;
     }

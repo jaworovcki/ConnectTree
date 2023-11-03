@@ -55,4 +55,17 @@ describe('BoardService', () => {
     board.set(2,2);
     expect(board.winnerIndex).toBe(1);
   });
+
+  it('clears the board on restart correctly', () => {
+    const board = new BoardService();
+
+    board.set(0,0);
+    board.restart();
+
+    expect(
+      board.boardContent.filter(
+        (row) => row.some((cell) => cell !== 0)
+      ).length
+    ).toBe(0);
+  });
 });

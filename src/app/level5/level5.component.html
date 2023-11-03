@@ -1,8 +1,8 @@
 <table class="tictactoe-board">
   <tbody>
-      <tr *ngFor="let row of boardService.boardContent; let rowIndex = index">
-          <td *ngFor="let col of row; let colIndex = index"
-           [class]="col | playerName | playerClass" (click)="boardService.set(colIndex, rowIndex)">{{ col | playerName }}</td>
+      <tr *ngFor="let col of boardService.boardContent; let colIndex = index">
+          <td *ngFor="let row of col; let rowIndex = index"
+           [class]="row | playerName | playerClass" (click)="boardService.set(colIndex, rowIndex)">{{ row | playerName }}</td>
       </tr>
   </tbody>
 </table>
